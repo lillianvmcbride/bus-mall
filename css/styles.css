@@ -10,8 +10,19 @@ body{
 img {
   border: 1px solid black;
   height: 250px;
-  float: left;
   margin-left: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+}
+
+h2 {
+  text-indent: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-bottom: 50px;
 }
 
 aside {
@@ -19,4 +30,10 @@ aside {
   height: 600px;
   width: 35%;
   float: left;
+}
+
+h3 {
+  text-align: center;
+  font-size: 30px;
+  line-height: 100px;
 }
