@@ -1,0 +1,22 @@
+body{
+  width: 100%;
+}
+
+#imageContainer {
+  float: left;
+  width: 60%;
+}
+
+img {
+  border: 1px solid black;
+  height: 250px;
+  float: left;
+  margin-left: 10px;
+}
+
+aside {
+  border: 1px solid black;
+  height: 600px;
+  width: 35%;
+  float: left;
+}
