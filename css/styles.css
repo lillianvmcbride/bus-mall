@@ -8,8 +8,8 @@ body{
 }
 
 img {
-  border: 1px solid black;
-  height: 250px;
+  border: 2px solid black;
+  height: 200px;
   margin-left: 10px;
 }
 
@@ -26,9 +26,9 @@ h2 {
 }
 
 aside {
-  border: 1px solid black;
+  border: 2px solid black;
   height: 600px;
-  width: 35%;
+  width: 30%;
   float: left;
 }
 
