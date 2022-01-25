@@ -1,0 +1,39 @@
+body{
+  width: 100%;
+}
+
+#imageContainer {
+  float: left;
+  width: 60%;
+}
+
+img {
+  border: 2px solid black;
+  height: 200px;
+  margin-left: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+}
+
+h2 {
+  text-indent: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+  padding-bottom: 50px;
+}
+
+aside {
+  border: 2px solid black;
+  height: 600px;
+  width: 30%;
+  float: left;
+}
+
+h3 {
+  text-align: center;
+  font-size: 30px;
+  line-height: 100px;
+}
