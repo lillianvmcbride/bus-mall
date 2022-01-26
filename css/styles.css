@@ -4,12 +4,13 @@ body{
 
 #imageContainer {
   float: left;
+  text-align: center;
   width: 60%;
 }
 
 img {
   border: 2px solid black;
-  height: 200px;
+  height: 150px;
   margin-left: 10px;
 }
 
