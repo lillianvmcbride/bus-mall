@@ -41,6 +41,7 @@ new Product('Wine Glass', 'assets/imgs/wine-glass.jpg');
 // a very large function
 function imageWasClicked(event) {
   totalClicks++;
+  console.log(totalClicks);
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
   } else if (event.srcElement.id === '2') {
@@ -83,6 +84,11 @@ function imageWasClicked(event) {
 
   // displaying results
   if(totalClicks === rounds) {
+    if (totalClicks === rounds) {
+      for (let j = 0; j < imageElements.length; j++) {
+        imageElements[j].removeEventListener('click', imageWasClicked, false);
+      }
+    }
     var resultsElement = document.getElementsByTagName('aside')[0];
     if(resultsElement.firstElementChild){
       resultsElement.firstElementChild.remove();
@@ -93,13 +99,31 @@ function imageWasClicked(event) {
     var createUL = document.createElement('ul');
     for (var i=0; i < allProducts.length; i++){
       var createLI = document.createElement('li');
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + 'votes!';
-      createUL.appendChild(createLI);
+      if (allProducts[i].timesClicked === 1) {
+        createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' vote.';
+        createUL.appendChild(createLI);
+      }
+      else if (allProducts[i].timesClicked === 0){
+        createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times.';
+        createUL.appendChild(createLI);
+      }
+      else {
+        createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' votes.';
+        createUL.appendChild(createLI);
+      }
     }
-    resultsElement.appendChild(createUL);
   }
+  resultsElement.appendChild(createUL);
 }
+
 
 for (var i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', imageWasClicked);
+}
+
+if (totalClicks === rounds) {
+  for (let j = 0; j < imageElements.length; j++) {
+    console.log('hey');
+    imageElements[i].removeEventListener('click', imageWasClicked, false);
+  }
 }
