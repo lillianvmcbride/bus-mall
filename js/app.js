@@ -38,6 +38,47 @@ new Product('Unicorn Meat', 'assets/imgs/unicorn.jpg');
 new Product('Watering Can', 'assets/imgs/water-can.jpg');
 new Product('Wine Glass', 'assets/imgs/wine-glass.jpg');
 
+function getProductArrProp(nameOfProperty) {
+  var answer = [];
+  for (var i = 0; i < allProducts.length; i++) {
+    answer[i] = allProducts[i][nameOfProperty];
+  }
+  return answer;
+}
+
+function runChart() {
+  let chart = document.getElementById('resultsChart').getContext('2d');
+  var myChart = new Chart(chart, {
+    type: 'polarArea',
+    data: {
+      options: {},
+      labels: getProductArrProp('name'),
+      datasets: [{
+        label: 'Number of Votes',
+        data: getProductArrProp('timesClicked'),
+        backgroundColor: [
+          'rgb(128,0,0)',
+          'rgb(255,0,0)',
+          'rgb(255,127,80)',
+          'rgb(	240,128,128)',
+          'rgb(255,215,0)',
+          'rgb(184,134,11)',
+          'rgb(240,230,140)',
+          'rgb(154,205,50)',
+          'rgb(85,107,47)',
+          'rgb(0,128,0)',
+          'rgb(32,178,170)',
+          'rgb(0,255,255)',
+          'rgb(100,149,237)',
+          'rgb(138,43,226)',
+          'rgb(128,0,128'
+        ]
+      }]
+    }
+  });
+}
+
+
 // a very large function
 function imageWasClicked(event) {
   totalClicks++;
@@ -56,15 +97,15 @@ function imageWasClicked(event) {
   allProducts[product3].timesSeen++;
 
   //picks random product to display and checks against duplicates
-  var nextProduct1 = Math.floor(Math.random() * allProducts.length);
+  let nextProduct1 = Math.floor(Math.random() * allProducts.length);
   while((nextProduct1 === product1) || (nextProduct1 === product2) || (nextProduct1 === product3)) {
     nextProduct1 = Math.floor(Math.random() * allProducts.length);
   }
-  var nextProduct2 = Math.floor(Math.random() * allProducts.length);
+  let nextProduct2 = Math.floor(Math.random() * allProducts.length);
   while((nextProduct2 === product1) || (nextProduct2 === product2) || (nextProduct2 === product3) || (nextProduct2 === nextProduct1)) {
     nextProduct2 = Math.floor(Math.random() * allProducts.length);
   }
-  var nextProduct3 = Math.floor(Math.random() * allProducts.length);
+  let nextProduct3 = Math.floor(Math.random() * allProducts.length);
   while((nextProduct3 === product1) || (nextProduct3 === product2) || (nextProduct3 === product3) || (nextProduct3 === nextProduct1) || (nextProduct3 === nextProduct2)) {
     nextProduct3 = Math.floor(Math.random() * allProducts.length);
   }
@@ -112,8 +153,9 @@ function imageWasClicked(event) {
         createUL.appendChild(createLI);
       }
     }
+    resultsElement.appendChild(createUL);
+    runChart();
   }
-  resultsElement.appendChild(createUL);
 }
 
 
@@ -127,3 +169,5 @@ if (totalClicks === rounds) {
     imageElements[i].removeEventListener('click', imageWasClicked, false);
   }
 }
+
+
