@@ -6,37 +6,51 @@ let product2 = 1;
 let product3 = 2;
 let allProducts = [];
 let totalClicks = 0;
-let rounds = 25;
 
 //constructor function
-function Product(name, imageUrl) {
+function Product(name, imageUrl, click, seen) {
   this.name = name;
   this.imageUrl = imageUrl;
-  this.timesClicked = 0 ;
+  this.timesClicked = click;
+  this.timesSeen = seen;
   allProducts.push(this);
-  this.timesSeen = 0;
 }
 
 //create new objects
-new Product('Bag', 'assets/imgs/bag.jpg');
-new Product('Banana Slicer', 'assets/imgs/banana.jpg');
-new Product('Tablet Stand', 'assets/imgs/bathroom.jpg');
-new Product('Toeless Boots', 'assets/imgs/boots.jpg');
+new Product('Bag', 'assets/imgs/bag.jpg', 0, 0);
+new Product('Banana Slicer', 'assets/imgs/banana.jpg', 0, 0);
+new Product('Tablet Stand', 'assets/imgs/bathroom.jpg', 0, 0);
+new Product('Toeless Boots', 'assets/imgs/boots.jpg', 0, 0);
 new Product('Breakfast Maker', 'assets/imgs/breakfast.jpg');
-new Product('Meatball Bubble Gum', 'assets/imgs/bubblegum.jpg');
-new Product('Chair', 'assets/imgs/chair.jpg');
-new Product('Cthulhu', 'assets/imgs/cthulhu.jpg');
-new Product('Duck Muzzle', 'assets/imgs/dog-duck.jpg');
-new Product('Dragon Meat', 'assets/imgs/dragon.jpg');
-new Product('Pen Silverware', 'assets/imgs/pen.jpg');
-new Product('Pet Sweeper', 'assets/imgs/pet-sweep.jpg');
-new Product('Pizza Scissors', 'assets/imgs/scissors.jpg');
-new Product('Shark Sleeping Bag', 'assets/imgs/shark.jpg');
-new Product('Baby Sweeper', 'assets/imgs/sweep.png');
-new Product('Tauntain Sleeping Bag', 'assets/imgs/tauntaun.jpg');
-new Product('Unicorn Meat', 'assets/imgs/unicorn.jpg');
-new Product('Watering Can', 'assets/imgs/water-can.jpg');
-new Product('Wine Glass', 'assets/imgs/wine-glass.jpg');
+new Product('Meatball Bubble Gum', 'assets/imgs/bubblegum.jpg', 0, 0);
+new Product('Chair', 'assets/imgs/chair.jpg', 0, 0);
+new Product('Cthulhu', 'assets/imgs/cthulhu.jpg', 0, 0);
+new Product('Duck Muzzle', 'assets/imgs/dog-duck.jpg', 0, 0);
+new Product('Dragon Meat', 'assets/imgs/dragon.jpg', 0, 0);
+new Product('Pen Silverware', 'assets/imgs/pen.jpg', 0, 0);
+new Product('Pet Sweeper', 'assets/imgs/pet-sweep.jpg', 0, 0);
+new Product('Pizza Scissors', 'assets/imgs/scissors.jpg', 0, 0);
+new Product('Shark Sleeping Bag', 'assets/imgs/shark.jpg', 0, 0);
+new Product('Baby Sweeper', 'assets/imgs/sweep.png', 0, 0);
+new Product('Tauntain Sleeping Bag', 'assets/imgs/tauntaun.jpg', 0, 0);
+new Product('Unicorn Meat', 'assets/imgs/unicorn.jpg', 0, 0);
+new Product('Watering Can', 'assets/imgs/water-can.jpg', 0, 0);
+new Product('Wine Glass', 'assets/imgs/wine-glass.jpg', 0, 0);
+
+function updateStorage() {
+  let productString = JSON.stringify(allProducts);
+  localStorage.setItem('productString', productString);
+}
+
+function retrieveStorage() {
+  let data = localStorage.getItem('productString');
+  let objectData = JSON.parse(data);
+  allProducts = [];
+  for(let i = 0; i < data.length; i++){
+    allProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked, objectData[i].timesSeen));
+  }
+}
+
 
 function getProductArrProp(nameOfProperty) {
   var answer = [];
@@ -78,10 +92,11 @@ function runChart() {
   });
 }
 
-
 // a very large function
 function imageWasClicked(event) {
   totalClicks++;
+  updateStorage();
+  retrieveStorage();
   console.log(totalClicks);
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
@@ -90,11 +105,6 @@ function imageWasClicked(event) {
   } else if (event.srcElement.id === '3') {
     allProducts[product3].timesClicked++;
   }
-
-  // accounting for first three products being seen
-  allProducts[product1].timesSeen++;
-  allProducts[product2].timesSeen++;
-  allProducts[product3].timesSeen++;
 
   //picks random product to display and checks against duplicates
   let nextProduct1 = Math.floor(Math.random() * allProducts.length);
@@ -124,8 +134,8 @@ function imageWasClicked(event) {
   imageElements[2].src = allProducts[product3].imageUrl;
 
   // displaying results
-  if(totalClicks === rounds) {
-    if (totalClicks === rounds) {
+  if (totalClicks === 25) {
+    if (totalClicks === 25) {
       for (let j = 0; j < imageElements.length; j++) {
         imageElements[j].removeEventListener('click', imageWasClicked, false);
       }
@@ -163,9 +173,8 @@ for (var i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', imageWasClicked);
 }
 
-if (totalClicks === rounds) {
+if (totalClicks === 25) {
   for (let j = 0; j < imageElements.length; j++) {
-    console.log('hey');
     imageElements[i].removeEventListener('click', imageWasClicked, false);
   }
 }
