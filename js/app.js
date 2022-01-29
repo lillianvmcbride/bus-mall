@@ -45,8 +45,10 @@ function updateStorage() {
 function retrieveStorage() {
   let data = localStorage.getItem('productString');
   let objectData = JSON.parse(data);
+  console.log(data);
+  console.log(objectData);
   allProducts = [];
-  for(let i = 0; i < data.length; i++){
+  for(let i = 0; i < objectData.length; i++){
     allProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked, objectData[i].timesSeen));
   }
 }
@@ -92,11 +94,42 @@ function runChart() {
   });
 }
 
+function displayResults() {
+  for (let j = 0; j < imageElements.length; j++) {
+    imageElements[j].removeEventListener('click', imageWasClicked, false);
+  }
+  var resultsElement = document.getElementsByTagName('aside')[0];
+  if(resultsElement.firstElementChild){
+    resultsElement.firstElementChild.remove();
+  }
+  var title = document.createElement('h2');
+  title.textContent = 'Results';
+  resultsElement.appendChild(title);
+  var createUL = document.createElement('ul');
+  for (var i=0; i < allProducts.length; i++){
+    var createLI = document.createElement('li');
+    if (allProducts[i].timesClicked === 1) {
+      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' vote.';
+      createUL.appendChild(createLI);
+    }
+    else if (allProducts[i].timesClicked === 0){
+      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times.';
+      createUL.appendChild(createLI);
+    }
+    else {
+      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' votes.';
+      createUL.appendChild(createLI);
+    }
+  }
+  resultsElement.appendChild(createUL);
+  runChart();
+}
+
 // a very large function
 function imageWasClicked(event) {
   totalClicks++;
   updateStorage();
-  retrieveStorage();
+  //retrieveStorage();
   console.log(totalClicks);
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
@@ -133,50 +166,11 @@ function imageWasClicked(event) {
   imageElements[1].src = allProducts[product2].imageUrl;
   imageElements[2].src = allProducts[product3].imageUrl;
 
-  // displaying results
   if (totalClicks === 25) {
-    if (totalClicks === 25) {
-      for (let j = 0; j < imageElements.length; j++) {
-        imageElements[j].removeEventListener('click', imageWasClicked, false);
-      }
-    }
-    var resultsElement = document.getElementsByTagName('aside')[0];
-    if(resultsElement.firstElementChild){
-      resultsElement.firstElementChild.remove();
-    }
-    var title = document.createElement('h2');
-    title.textContent = 'Results';
-    resultsElement.appendChild(title);
-    var createUL = document.createElement('ul');
-    for (var i=0; i < allProducts.length; i++){
-      var createLI = document.createElement('li');
-      if (allProducts[i].timesClicked === 1) {
-        createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' vote.';
-        createUL.appendChild(createLI);
-      }
-      else if (allProducts[i].timesClicked === 0){
-        createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times.';
-        createUL.appendChild(createLI);
-      }
-      else {
-        createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' votes.';
-        createUL.appendChild(createLI);
-      }
-    }
-    resultsElement.appendChild(createUL);
-    runChart();
+    displayResults();
   }
 }
-
 
 for (var i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', imageWasClicked);
 }
-
-if (totalClicks === 25) {
-  for (let j = 0; j < imageElements.length; j++) {
-    imageElements[i].removeEventListener('click', imageWasClicked, false);
-  }
-}
-
-
