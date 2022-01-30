@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Josefin+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -16,13 +19,14 @@
         <aside>
             <h2>Results</h2>
         </aside>
-        <div id= "imageContainer">
+        <div id= "container">
+          <div id= "imageContainer">
           <h1>Choose A Product!</h1>
             <img class="product" id="1" src="assets/imgs/dragon.jpg">
             <img class="product" id="2" src="assets/imgs/shark.jpg">
             <img class="product" id="3" src="assets/imgs/pet-sweep.jpg">
-            <h3>Thanks for choosing Bus Mall!</h3>
             <button onClick="window.location.href=window.location.href">Refresh Page</button>
+          </div>
         </div>
         <canvas id="resultsChart" width="400" height="400"></canvas>
     </div>

@@ -21,7 +21,7 @@ new Product('Bag', 'assets/imgs/bag.jpg', 0, 0);
 new Product('Banana Slicer', 'assets/imgs/banana.jpg', 0, 0);
 new Product('Tablet Stand', 'assets/imgs/bathroom.jpg', 0, 0);
 new Product('Toeless Boots', 'assets/imgs/boots.jpg', 0, 0);
-new Product('Breakfast Maker', 'assets/imgs/breakfast.jpg');
+new Product('Breakfast Maker', 'assets/imgs/breakfast.jpg', 0, 0);
 new Product('Meatball Bubble Gum', 'assets/imgs/bubblegum.jpg', 0, 0);
 new Product('Chair', 'assets/imgs/chair.jpg', 0, 0);
 new Product('Cthulhu', 'assets/imgs/cthulhu.jpg', 0, 0);
@@ -45,14 +45,13 @@ function updateStorage() {
 function retrieveStorage() {
   let data = localStorage.getItem('productString');
   let objectData = JSON.parse(data);
-  console.log(data);
-  console.log(objectData);
-  allProducts = [];
+  let newAllProducts = [];
   for(let i = 0; i < objectData.length; i++){
-    allProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked, objectData[i].timesSeen));
+    newAllProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked + allProducts[i].timesClicked, objectData[i].timesSeen + allProducts[i].timesSeen));
   }
+  allProducts = [];
+  allProducts = newAllProducts;
 }
-
 
 function getProductArrProp(nameOfProperty) {
   var answer = [];
@@ -72,6 +71,7 @@ function runChart() {
       datasets: [{
         label: 'Number of Votes',
         data: getProductArrProp('timesClicked'),
+        border: 'black',
         backgroundColor: [
           'rgb(128,0,0)',
           'rgb(255,0,0)',
@@ -95,9 +95,6 @@ function runChart() {
 }
 
 function displayResults() {
-  for (let j = 0; j < imageElements.length; j++) {
-    imageElements[j].removeEventListener('click', imageWasClicked, false);
-  }
   var resultsElement = document.getElementsByTagName('aside')[0];
   if(resultsElement.firstElementChild){
     resultsElement.firstElementChild.remove();
@@ -117,7 +114,7 @@ function displayResults() {
       createUL.appendChild(createLI);
     }
     else {
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' votes.';
+      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times this round and has received ' + allProducts[i].timesClicked + ' all time votes.';
       createUL.appendChild(createLI);
     }
   }
@@ -127,16 +124,30 @@ function displayResults() {
 
 // a very large function
 function imageWasClicked(event) {
+  if (totalClicks === 25) {
+    for (let j = 0; j < imageElements.length; j++) {
+      imageElements[j].removeEventListener('click', imageWasClicked, false);
+    }
+    let goAway = document.getElementById('imageContainer');
+    goAway.remove();
+    retrieveStorage();
+    displayResults();
+    // let placement = document.getElementById('content');
+    // let button = document.createElement('button');
+    // button.textContent = 'New Round';
+    // placement.appendChild(button);
+  }
   totalClicks++;
   updateStorage();
-  //retrieveStorage();
-  console.log(totalClicks);
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
+    allProducts[product1].timesSeen++;
   } else if (event.srcElement.id === '2') {
     allProducts[product2].timesClicked++;
+    allProducts[product2].timesSeen++;
   } else if (event.srcElement.id === '3') {
     allProducts[product3].timesClicked++;
+    allProducts[product3].timesSeen++;
   }
 
   //picks random product to display and checks against duplicates
@@ -153,22 +164,15 @@ function imageWasClicked(event) {
     nextProduct3 = Math.floor(Math.random() * allProducts.length);
   }
 
-  // assigning new random product to each position in imageElements and keeping track of number of times each product is seen
+  // assigning new random product to each position in imageElements
   product1 = nextProduct1;
-  allProducts[product1].timesSeen++;
   product2 = nextProduct2;
-  allProducts[product2].timesSeen++;
   product3 = nextProduct3;
-  allProducts[product3].timesSeen++;
 
   // displaying images
   imageElements[0].src = allProducts[product1].imageUrl;
   imageElements[1].src = allProducts[product2].imageUrl;
   imageElements[2].src = allProducts[product3].imageUrl;
-
-  if (totalClicks === 25) {
-    displayResults();
-  }
 }
 
 for (var i = 0; i < imageElements.length; i++) {
