@@ -71,6 +71,7 @@ function runChart() {
       datasets: [{
         label: 'Number of Votes',
         data: getProductArrProp('timesClicked'),
+        border: 'black',
         backgroundColor: [
           'rgb(128,0,0)',
           'rgb(255,0,0)',
