@@ -130,6 +130,10 @@ function imageWasClicked(event) {
     }
     let goAway = document.getElementById('imageContainer');
     goAway.remove();
+    let canvasDiv = document.getElementById('canvas');
+    let canvas = document.createElement('canvas');
+    canvas.id = 'resultsChart';
+    canvasDiv.appendChild(canvas);
     retrieveStorage();
     displayResults();
     // let placement = document.getElementById('content');
