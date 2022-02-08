@@ -106,7 +106,13 @@ function displayResults() {
   var createUL = document.createElement('ul');
   for (var i=0; i < allProducts.length; i++){
     var createLI = document.createElement('li');
-    if (allProducts[i].timesClicked === 1) {
+    if (allProducts[i].timesSeen === 1 && allProducts[i].timesClicked === 1) {
+      createLI.textContent = allProducts[i].name + ' was shown 1 time and received 1 vote.';
+    }
+    else if (allProducts[i].timesSeen === 1) {
+      createLI.textContent = allProducts[i].name + ' was shown 1 time..';
+    }
+    else if (allProducts[i].timesClicked === 1) {
       createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' vote.';
       createUL.appendChild(createLI);
     }
@@ -115,7 +121,7 @@ function displayResults() {
       createUL.appendChild(createLI);
     }
     else {
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times this round and has received ' + allProducts[i].timesClicked + ' all time votes.';
+      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times this round and received ' + allProducts[i].timesClicked + ' votes.';
       createUL.appendChild(createLI);
     }
   }
