@@ -6,6 +6,7 @@ let product2 = 1;
 let product3 = 2;
 let allProducts = [];
 let totalClicks = 0;
+let clicksLeft = 25;
 
 //constructor function
 function Product(name, imageUrl, click, seen) {
@@ -110,7 +111,7 @@ function displayResults() {
       createUL.appendChild(createLI);
     }
     else if (allProducts[i].timesClicked === 0){
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times.';
+      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times this round.';
       createUL.appendChild(createLI);
     }
     else {
@@ -124,7 +125,12 @@ function displayResults() {
 
 // a very large function
 function imageWasClicked(event) {
+  totalClicks++;
+  let clicks = document.getElementById('clicks');
+  clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
   if (totalClicks === 25) {
+    let button = document.getElementById('button');
+    button.textContent = 'New Round';
     for (let j = 0; j < imageElements.length; j++) {
       imageElements[j].removeEventListener('click', imageWasClicked, false);
     }
@@ -136,12 +142,7 @@ function imageWasClicked(event) {
     canvasDiv.appendChild(canvas);
     retrieveStorage();
     displayResults();
-    // let placement = document.getElementById('content');
-    // let button = document.createElement('button');
-    // button.textContent = 'New Round';
-    // placement.appendChild(button);
   }
-  totalClicks++;
   updateStorage();
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
