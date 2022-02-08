@@ -26,11 +26,11 @@ new Product('Meatball Bubble Gum', 'assets/imgs/bubblegum.jpg', 0, 0);
 new Product('Chair', 'assets/imgs/chair.jpg', 0, 0);
 new Product('Cthulhu', 'assets/imgs/cthulhu.jpg', 0, 0);
 new Product('Duck Muzzle', 'assets/imgs/dog-duck.jpg', 0, 0);
-new Product('Dragon Meat', 'assets/imgs/dragon.jpg', 0, 0);
+new Product('Dragon Meat', 'assets/imgs/dragon.jpg', 0, 1);
 new Product('Pen Silverware', 'assets/imgs/pen.jpg', 0, 0);
-new Product('Pet Sweeper', 'assets/imgs/pet-sweep.jpg', 0, 0);
+new Product('Pet Sweeper', 'assets/imgs/pet-sweep.jpg', 0, 1);
 new Product('Pizza Scissors', 'assets/imgs/scissors.jpg', 0, 0);
-new Product('Shark Sleeping Bag', 'assets/imgs/shark.jpg', 0, 0);
+new Product('Shark Sleeping Bag', 'assets/imgs/shark.jpg', 0, 1);
 new Product('Baby Sweeper', 'assets/imgs/sweep.png', 0, 0);
 new Product('Tauntain Sleeping Bag', 'assets/imgs/tauntaun.jpg', 0, 0);
 new Product('Unicorn Meat', 'assets/imgs/unicorn.jpg', 0, 0);
@@ -145,13 +145,10 @@ function imageWasClicked(event) {
   updateStorage();
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
-    allProducts[product1].timesSeen++;
   } else if (event.srcElement.id === '2') {
     allProducts[product2].timesClicked++;
-    allProducts[product2].timesSeen++;
   } else if (event.srcElement.id === '3') {
     allProducts[product3].timesClicked++;
-    allProducts[product3].timesSeen++;
   }
 
   //picks random product to display and checks against duplicates
@@ -175,8 +172,11 @@ function imageWasClicked(event) {
 
   // displaying images
   imageElements[0].src = allProducts[product1].imageUrl;
+  allProducts[product1].timesSeen++;
   imageElements[1].src = allProducts[product2].imageUrl;
+  allProducts[product2].timesSeen++;
   imageElements[2].src = allProducts[product3].imageUrl;
+  allProducts[product3].timesSeen++;
 }
 
 for (var i = 0; i < imageElements.length; i++) {
