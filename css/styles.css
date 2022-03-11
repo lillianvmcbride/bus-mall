@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'neonregular';
+  src: url('../fonts/neon.regular-webfont.woff2') format('woff2'),
+       url('../fonts/neon.regular-webfont.woff') format('woff'),
+       url('../fonts/neon.TTF') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
   width: 100%;
   background-image: linear-gradient(to right, whitesmoke, rgba(14.5, 6.7, 46.3, .6));
@@ -16,11 +25,18 @@ img {
   margin-left: 10px;
 }
 
+.title {
+  color: #350037;
+  font-size: 64px;
+  font-family: 'neonregular';
+  text-shadow: 2px 2px white;
+  font-weight: bolder;
+}
+
 h1 {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
-  font-size: 42px;
-  padding-bottom: 10px;
+  font-size: 36px;
   padding-top: 20px;
   color: white;
   text-shadow: 2px 2px black;
@@ -70,9 +86,3 @@ button {
   margin-top: 20%;
   margin-right: 5%;
 }
-
-/* h3 {
-  text-align: center;
-  font-size: 30px;
-  line-height: 50px;
-} */
