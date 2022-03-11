@@ -67,6 +67,8 @@ button {
 
 #newRound {
   display: none;
+  margin-top: 20%;
+  margin-right: 5%;
 }
 
 /* h3 {
