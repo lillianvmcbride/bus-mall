@@ -132,6 +132,13 @@ function displayResults() {
 // a very large function
 function imageWasClicked(event) {
   totalClicks++;
+  // displaying images
+  imageElements[0].src = allProducts[product1].imageUrl;
+  allProducts[product1].timesSeen++;
+  imageElements[1].src = allProducts[product2].imageUrl;
+  allProducts[product2].timesSeen++;
+  imageElements[2].src = allProducts[product3].imageUrl;
+  allProducts[product3].timesSeen++;
   let clicks = document.getElementById('clicks');
   clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
   if (totalClicks === 25) {
@@ -157,27 +164,6 @@ function imageWasClicked(event) {
     allProducts[product3].timesClicked++;
   }
 
-  console.log(allProducts[0].timesClicked);
-  console.log(allProducts[1].timesClicked);
-  console.log(allProducts[2].timesClicked);
-  console.log(allProducts[3].timesClicked);
-  console.log(allProducts[4].timesClicked);
-  console.log(allProducts[5].timesClicked);
-  console.log(allProducts[6].timesClicked);
-  console.log(allProducts[7].timesClicked);
-  console.log(allProducts[8].timesClicked);
-  console.log(allProducts[9].timesClicked);
-  console.log(allProducts[10].timesClicked);
-  console.log(allProducts[11].timesClicked);
-  console.log(allProducts[12].timesClicked);
-  console.log(allProducts[13].timesClicked);
-  console.log(allProducts[14].timesClicked);
-  console.log(allProducts[15].timesClicked);
-  console.log(allProducts[16].timesClicked);
-  console.log(allProducts[17].timesClicked);
-  console.log(allProducts[18].timesClicked);
-  console.log('XXX');
-
   //picks random product to display and checks against duplicates
   let nextProduct1 = Math.floor(Math.random() * allProducts.length);
   while((nextProduct1 === product1) || (nextProduct1 === product2) || (nextProduct1 === product3)) {
@@ -196,14 +182,6 @@ function imageWasClicked(event) {
   product1 = nextProduct1;
   product2 = nextProduct2;
   product3 = nextProduct3;
-
-  // displaying images
-  imageElements[0].src = allProducts[product1].imageUrl;
-  allProducts[product1].timesSeen++;
-  imageElements[1].src = allProducts[product2].imageUrl;
-  allProducts[product2].timesSeen++;
-  imageElements[2].src = allProducts[product3].imageUrl;
-  allProducts[product3].timesSeen++;
   updateStorage();
 }
 
