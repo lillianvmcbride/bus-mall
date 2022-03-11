@@ -1,5 +1,6 @@
 'use strict';
 
+var resultsElement = document.getElementsByTagName('aside')[0];
 var imageElements = document.getElementsByTagName('img');
 let product1 = 0;
 let product2 = 1;
@@ -105,7 +106,7 @@ function displayImages() {
 }
 
 function displayResults() {
-  var resultsElement = document.getElementsByTagName('aside')[0];
+  resultsElement.style.display = 'block';
   if(resultsElement.firstElementChild){
     resultsElement.firstElementChild.remove();
   }
