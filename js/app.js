@@ -95,6 +95,15 @@ function runChart() {
   });
 }
 
+function displayImages() {
+  imageElements[0].src = allProducts[product1].imageUrl;
+  allProducts[product1].timesSeen++;
+  imageElements[1].src = allProducts[product2].imageUrl;
+  allProducts[product2].timesSeen++;
+  imageElements[2].src = allProducts[product3].imageUrl;
+  allProducts[product3].timesSeen++;
+}
+
 function displayResults() {
   var resultsElement = document.getElementsByTagName('aside')[0];
   if(resultsElement.firstElementChild){
@@ -132,18 +141,19 @@ function displayResults() {
 // a very large function
 function imageWasClicked(event) {
   totalClicks++;
-  // displaying images
-  imageElements[0].src = allProducts[product1].imageUrl;
-  allProducts[product1].timesSeen++;
-  imageElements[1].src = allProducts[product2].imageUrl;
-  allProducts[product2].timesSeen++;
-  imageElements[2].src = allProducts[product3].imageUrl;
-  allProducts[product3].timesSeen++;
+  displayImages();
+  if(event.srcElement.id === '1') {
+    allProducts[product1].timesClicked++;
+  } else if (event.srcElement.id === '2') {
+    allProducts[product2].timesClicked++;
+  } else if (event.srcElement.id === '3') {
+    allProducts[product3].timesClicked++;
+  }
   let clicks = document.getElementById('clicks');
   clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
   if (totalClicks === 25) {
-    let button = document.getElementById('button');
-    button.textContent = 'New Round';
+    let button = document.getElementById('newRound');
+    button.style.display = 'inline';
     for (let j = 0; j < imageElements.length; j++) {
       imageElements[j].removeEventListener('click', imageWasClicked, false);
     }
@@ -153,15 +163,9 @@ function imageWasClicked(event) {
     let canvas = document.createElement('canvas');
     canvas.id = 'resultsChart';
     canvasDiv.appendChild(canvas);
+    updateStorage();
     retrieveStorage();
     displayResults();
-  }
-  if(event.srcElement.id === '1') {
-    allProducts[product1].timesClicked++;
-  } else if (event.srcElement.id === '2') {
-    allProducts[product2].timesClicked++;
-  } else if (event.srcElement.id === '3') {
-    allProducts[product3].timesClicked++;
   }
 
   //picks random product to display and checks against duplicates
@@ -182,6 +186,7 @@ function imageWasClicked(event) {
   product1 = nextProduct1;
   product2 = nextProduct2;
   product3 = nextProduct3;
+
   updateStorage();
 }
 
