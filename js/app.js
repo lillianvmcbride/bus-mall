@@ -2,6 +2,7 @@
 
 var resultsElement = document.getElementsByTagName('aside')[0];
 var imageElements = document.getElementsByTagName('img');
+var reset = document.getElementById('reset');
 let product1 = 0;
 let product2 = 1;
 let product3 = 2;
@@ -139,9 +140,15 @@ function displayResults() {
   runChart();
 }
 
+function resetButton(event) {
+  clicksLeft = 25;
+  let clicks = document.getElementById('clicks');
+  clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
+}
+
 // a very large function
 function imageWasClicked(event) {
-  totalClicks++;
+  clicksLeft--;
   displayImages();
   if(event.srcElement.id === '1') {
     allProducts[product1].timesClicked++;
@@ -152,7 +159,7 @@ function imageWasClicked(event) {
   }
   let clicks = document.getElementById('clicks');
   clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
-  if (totalClicks === 25) {
+  if (clicksLeft === 0) {
     let button = document.getElementById('newRound');
     button.style.display = 'inline';
     for (let j = 0; j < imageElements.length; j++) {
@@ -194,3 +201,6 @@ function imageWasClicked(event) {
 for (var i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', imageWasClicked);
 }
+
+reset.addEventListener('click', resetButton);
+
