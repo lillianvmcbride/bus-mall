@@ -1,6 +1,8 @@
 'use strict';
 
+var resultsElement = document.getElementsByTagName('aside')[0];
 var imageElements = document.getElementsByTagName('img');
+var reset = document.getElementById('reset');
 let product1 = 0;
 let product2 = 1;
 let product3 = 2;
@@ -48,7 +50,7 @@ function retrieveStorage() {
   let objectData = JSON.parse(data);
   let newAllProducts = [];
   for(let i = 0; i < objectData.length; i++){
-    newAllProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked + allProducts[i].timesClicked, objectData[i].timesSeen + allProducts[i].timesSeen));
+    newAllProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked, objectData[i].timesSeen));
   }
   allProducts = [];
   allProducts = newAllProducts;
@@ -95,8 +97,17 @@ function runChart() {
   });
 }
 
+function displayImages() {
+  imageElements[0].src = allProducts[product1].imageUrl;
+  allProducts[product1].timesSeen++;
+  imageElements[1].src = allProducts[product2].imageUrl;
+  allProducts[product2].timesSeen++;
+  imageElements[2].src = allProducts[product3].imageUrl;
+  allProducts[product3].timesSeen++;
+}
+
 function displayResults() {
-  var resultsElement = document.getElementsByTagName('aside')[0];
+  resultsElement.style.display = 'block';
   if(resultsElement.firstElementChild){
     resultsElement.firstElementChild.remove();
   }
@@ -129,14 +140,28 @@ function displayResults() {
   runChart();
 }
 
-// a very large function
-function imageWasClicked(event) {
-  totalClicks++;
+function resetButton(event) {
+  clicksLeft = 25;
   let clicks = document.getElementById('clicks');
   clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
-  if (totalClicks === 25) {
-    let button = document.getElementById('button');
-    button.textContent = 'New Round';
+}
+
+// a very large function
+function imageWasClicked(event) {
+  clicksLeft--;
+  displayImages();
+  if(event.srcElement.id === '1') {
+    allProducts[product1].timesClicked++;
+  } else if (event.srcElement.id === '2') {
+    allProducts[product2].timesClicked++;
+  } else if (event.srcElement.id === '3') {
+    allProducts[product3].timesClicked++;
+  }
+  let clicks = document.getElementById('clicks');
+  clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
+  if (clicksLeft === 0) {
+    let button = document.getElementById('newRound');
+    button.style.display = 'inline';
     for (let j = 0; j < imageElements.length; j++) {
       imageElements[j].removeEventListener('click', imageWasClicked, false);
     }
@@ -146,16 +171,9 @@ function imageWasClicked(event) {
     let canvas = document.createElement('canvas');
     canvas.id = 'resultsChart';
     canvasDiv.appendChild(canvas);
+    updateStorage();
     retrieveStorage();
     displayResults();
-  }
-  updateStorage();
-  if(event.srcElement.id === '1') {
-    allProducts[product1].timesClicked++;
-  } else if (event.srcElement.id === '2') {
-    allProducts[product2].timesClicked++;
-  } else if (event.srcElement.id === '3') {
-    allProducts[product3].timesClicked++;
   }
 
   //picks random product to display and checks against duplicates
@@ -177,15 +195,12 @@ function imageWasClicked(event) {
   product2 = nextProduct2;
   product3 = nextProduct3;
 
-  // displaying images
-  imageElements[0].src = allProducts[product1].imageUrl;
-  allProducts[product1].timesSeen++;
-  imageElements[1].src = allProducts[product2].imageUrl;
-  allProducts[product2].timesSeen++;
-  imageElements[2].src = allProducts[product3].imageUrl;
-  allProducts[product3].timesSeen++;
+  updateStorage();
 }
 
 for (var i = 0; i < imageElements.length; i++) {
   imageElements[i].addEventListener('click', imageWasClicked);
 }
+
+reset.addEventListener('click', resetButton);
+
