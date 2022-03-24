@@ -78,19 +78,24 @@ function runChart() {
         backgroundColor: [
           'rgb(128,0,0)',
           'rgb(255,0,0)',
-          'rgb(255,127,80)',
-          'rgb(	240,128,128)',
+          'rgb(255,103,0)',
+          'rgb(240,128,128)',
+          'rgb(255,170,0)',
           'rgb(255,215,0)',
-          'rgb(184,134,11)',
           'rgb(240,230,140)',
+          'rgb(184,134,11)',
           'rgb(154,205,50)',
-          'rgb(85,107,47)',
           'rgb(0,128,0)',
+          'rgb(85,107,47)',
           'rgb(32,178,170)',
           'rgb(0,255,255)',
           'rgb(100,149,237)',
+          'rgb(7,7,147)',
           'rgb(138,43,226)',
-          'rgb(128,0,128'
+          'rgb(128,0,128)',
+          'rgb(0,0,0)',
+          'rgb(256,256,256)',
+
         ]
       }]
     }
@@ -108,35 +113,29 @@ function displayImages() {
 
 function displayResults() {
   resultsElement.style.display = 'block';
-  if(resultsElement.firstElementChild){
-    resultsElement.firstElementChild.remove();
+  let table = document.getElementsByTagName('table')[0];
+  let firstRow = document.createElement('tr');
+  let place = document.createElement('td');
+  place.id = 'place';
+  let color = document.createElement('td');
+  color.id = 'color';
+  let thing = document.createElement('td');
+  thing.id = 'thing';
+  thing.textContent = 'Product';
+  let seen = document.createElement('td');
+  seen.textContent = 'Seen';
+  let clicked = document.createElement('td');
+  clicked.textContent = 'Clicked';
+  firstRow.appendChild(place);
+  firstRow.appendChild(color);
+  firstRow.appendChild(thing);
+  firstRow.appendChild(seen);
+  firstRow.appendChild(clicked);
+  table.appendChild(firstRow);
+  for (let i = 0; i < allProducts.length; i++) {
+    let row = document.createElement('tr');
+    table.appendChild(row);
   }
-  var title = document.createElement('h2');
-  title.textContent = 'Results';
-  resultsElement.appendChild(title);
-  var createUL = document.createElement('ul');
-  for (var i=0; i < allProducts.length; i++){
-    var createLI = document.createElement('li');
-    if (allProducts[i].timesSeen === 1 && allProducts[i].timesClicked === 1) {
-      createLI.textContent = allProducts[i].name + ' was shown 1 time and received 1 vote.';
-    }
-    else if (allProducts[i].timesSeen === 1) {
-      createLI.textContent = allProducts[i].name + ' was shown 1 time..';
-    }
-    else if (allProducts[i].timesClicked === 1) {
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times and received ' + allProducts[i].timesClicked + ' vote.';
-      createUL.appendChild(createLI);
-    }
-    else if (allProducts[i].timesClicked === 0){
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times this round.';
-      createUL.appendChild(createLI);
-    }
-    else {
-      createLI.textContent = allProducts[i].name + ' was shown ' + allProducts[i].timesSeen + ' times this round and received ' + allProducts[i].timesClicked + ' votes.';
-      createUL.appendChild(createLI);
-    }
-  }
-  resultsElement.appendChild(createUL);
   runChart();
 }
 
@@ -160,8 +159,10 @@ function imageWasClicked(event) {
   let clicks = document.getElementById('clicks');
   clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
   if (clicksLeft === 0) {
-    let button = document.getElementById('newRound');
-    button.style.display = 'inline';
+    let button1 = document.getElementById('continue');
+    button1.style.display = 'block';
+    let button2 = document.getElementById('newRound');
+    button2.style.display = 'inline';
     for (let j = 0; j < imageElements.length; j++) {
       imageElements[j].removeEventListener('click', imageWasClicked, false);
     }

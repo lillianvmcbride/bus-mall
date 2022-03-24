@@ -55,17 +55,18 @@ h2 {
 aside {
   display: none;
   font-family: 'Josefin Sans', sans-serif;
-  border: 2px solid whitesmoke;
   padding: 15px;
+  margin-left: 5%;
   height: 650px;
   width: 25%;
   float: left;
   font-size: 15px;
-  background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6));
+  /* background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6)); */
 }
 
 button {
   font-family: 'Josefin Sans', sans-serif;
+  border-radius: 20%;
   padding: 30px;
   font-size: 24px;
   font-weight: bold;
@@ -77,12 +78,29 @@ button {
   padding-left: 70px;
   padding-right: 70px;
   width: 37%;
-  display: inline-block
+  display: inline-block;
+}
+
+#buttons {
+  display: inline;
+}
+
+#continue {
+  display: none;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 10%;
 }
 
 #newRound {
   display: none;
-  margin-top: 10%;
-  margin-right: 10%;
-  float: right;
+}
+
+td {
+border: 2px solid #200135;
+padding: 5px;
+}
+
+#place, #color {
+  visibility: hidden;
 }
