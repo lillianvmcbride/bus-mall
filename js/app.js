@@ -3,6 +3,8 @@
 var resultsElement = document.getElementsByTagName('aside')[0];
 var imageElements = document.getElementsByTagName('img');
 var reset = document.getElementById('reset');
+let goAway = document.getElementById('imageContainer');
+var continuing = document.getElementById('continue');
 let product1 = 0;
 let product2 = 1;
 let product3 = 2;
@@ -51,7 +53,7 @@ function retrieveStorage() {
   let objectData = JSON.parse(data);
   let newAllProducts = [];
   for(let i = 0; i < objectData.length; i++){
-    newAllProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked, objectData[i].timesSeen));
+    newAllProducts.push(new Product(objectData[i].name, objectData[i].imgUrl, objectData[i].timesClicked, objectData[i].timesSeen, objectData[i].color));
   }
   allProducts = [];
   allProducts = newAllProducts;
@@ -141,6 +143,7 @@ function displayResults() {
 }
 
 function resetButton(event) {
+  goAway.display = 'show';
   clicksLeft = 25;
   let clicks = document.getElementById('clicks');
   clicks.textContent = clicksLeft - totalClicks + ' Clicks Remaining';
@@ -167,8 +170,7 @@ function imageWasClicked(event) {
     for (let j = 0; j < imageElements.length; j++) {
       imageElements[j].removeEventListener('click', imageWasClicked, false);
     }
-    let goAway = document.getElementById('imageContainer');
-    goAway.remove();
+    goAway.display = 'none';
     let canvasDiv = document.getElementById('canvas');
     let canvas = document.createElement('canvas');
     canvas.id = 'resultsChart';
@@ -205,4 +207,6 @@ for (var i = 0; i < imageElements.length; i++) {
 }
 
 reset.addEventListener('click', resetButton);
+
+continuing.addEventListener('click', resetButton);
 
