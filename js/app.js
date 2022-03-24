@@ -78,8 +78,9 @@ function runChart() {
         backgroundColor: [
           'rgb(128,0,0)',
           'rgb(255,0,0)',
-          'rgb(255,103,0)',
+          'rgb(238,3,136)',
           'rgb(240,128,128)',
+          'rgb(255,103,0)',
           'rgb(255,170,0)',
           'rgb(255,215,0)',
           'rgb(240,230,140)',
@@ -94,7 +95,6 @@ function runChart() {
           'rgb(138,43,226)',
           'rgb(128,0,128)',
           'rgb(0,0,0)',
-          'rgb(256,256,256)',
 
         ]
       }]
@@ -123,9 +123,9 @@ function displayResults() {
   thing.id = 'thing';
   thing.textContent = 'Product';
   let seen = document.createElement('td');
-  seen.textContent = 'Seen';
+  seen.textContent = 'Times Seen';
   let clicked = document.createElement('td');
-  clicked.textContent = 'Clicked';
+  clicked.textContent = 'Times Clicked';
   firstRow.appendChild(place);
   firstRow.appendChild(color);
   firstRow.appendChild(thing);
