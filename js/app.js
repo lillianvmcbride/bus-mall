@@ -11,34 +11,35 @@ let totalClicks = 0;
 let clicksLeft = 25;
 
 //constructor function
-function Product(name, imageUrl, click, seen) {
+function Product(name, imageUrl, click, seen, color) {
   this.name = name;
   this.imageUrl = imageUrl;
   this.timesClicked = click;
   this.timesSeen = seen;
+  this.color = color;
   allProducts.push(this);
 }
 
 //create new objects
-new Product('Bag', 'assets/imgs/bag.jpg', 0, 0);
-new Product('Banana Slicer', 'assets/imgs/banana.jpg', 0, 0);
-new Product('Tablet Stand', 'assets/imgs/bathroom.jpg', 0, 0);
-new Product('Toeless Boots', 'assets/imgs/boots.jpg', 0, 0);
-new Product('Breakfast Maker', 'assets/imgs/breakfast.jpg', 0, 0);
-new Product('Meatball Bubble Gum', 'assets/imgs/bubblegum.jpg', 0, 0);
-new Product('Chair', 'assets/imgs/chair.jpg', 0, 0);
-new Product('Cthulhu', 'assets/imgs/cthulhu.jpg', 0, 0);
-new Product('Duck Muzzle', 'assets/imgs/dog-duck.jpg', 0, 0);
-new Product('Dragon Meat', 'assets/imgs/dragon.jpg', 0, 1);
-new Product('Pen Silverware', 'assets/imgs/pen.jpg', 0, 0);
-new Product('Pet Sweeper', 'assets/imgs/pet-sweep.jpg', 0, 1);
-new Product('Pizza Scissors', 'assets/imgs/scissors.jpg', 0, 0);
-new Product('Shark Sleeping Bag', 'assets/imgs/shark.jpg', 0, 1);
-new Product('Baby Sweeper', 'assets/imgs/sweep.png', 0, 0);
-new Product('Tauntain Sleeping Bag', 'assets/imgs/tauntaun.jpg', 0, 0);
-new Product('Unicorn Meat', 'assets/imgs/unicorn.jpg', 0, 0);
-new Product('Watering Can', 'assets/imgs/water-can.jpg', 0, 0);
-new Product('Wine Glass', 'assets/imgs/wine-glass.jpg', 0, 0);
+new Product('Bag', 'assets/imgs/bag.jpg', 0, 0, 'rgb(128,0,0)');
+new Product('Banana Slicer', 'assets/imgs/banana.jpg', 0, 0, 'rgb(255,0,0)');
+new Product('Tablet Stand', 'assets/imgs/bathroom.jpg', 0, 0, 'rgb(238,3,136)');
+new Product('Toeless Boots', 'assets/imgs/boots.jpg', 0, 0, 'rgb(240,128,128)');
+new Product('Breakfast Maker', 'assets/imgs/breakfast.jpg', 0, 0, 'rgb(255,103,0)');
+new Product('Meatball Bubble Gum', 'assets/imgs/bubblegum.jpg', 0, 0, 'rgb(255,170,0)');
+new Product('Chair', 'assets/imgs/chair.jpg', 0, 0, 'rgb(255,215,0)');
+new Product('Cthulhu', 'assets/imgs/cthulhu.jpg', 0, 0, 'rgb(240,230,140)');
+new Product('Duck Muzzle', 'assets/imgs/dog-duck.jpg', 0, 0, 'rgb(184,134,11)');
+new Product('Dragon Meat', 'assets/imgs/dragon.jpg', 0, 1, 'rgb(154,205,50)');
+new Product('Pen Silverware', 'assets/imgs/pen.jpg', 0, 0, 'rgb(0,128,0)');
+new Product('Pet Sweeper', 'assets/imgs/pet-sweep.jpg', 0, 1, 'rgb(85,107,47)');
+new Product('Pizza Scissors', 'assets/imgs/scissors.jpg', 0, 0, 'rgb(32,178,170)');
+new Product('Shark Sleeping Bag', 'assets/imgs/shark.jpg', 0, 1, 'rgb(0,255,255)');
+new Product('Baby Sweeper', 'assets/imgs/sweep.png', 0, 0, 'rgb(100,149,237)');
+new Product('Tauntain Sleeping Bag', 'assets/imgs/tauntaun.jpg', 0, 0, 'rgb(7,7,147)');
+new Product('Unicorn Meat', 'assets/imgs/unicorn.jpg', 0, 0, 'rgb(138,43,226)');
+new Product('Watering Can', 'assets/imgs/water-can.jpg', 0, 0, 'rgb(128,0,128)');
+new Product('Wine Glass', 'assets/imgs/wine-glass.jpg', 0, 0, 'rgb(0,0,0)');
 
 function updateStorage() {
   let productString = JSON.stringify(allProducts);
