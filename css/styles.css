@@ -55,7 +55,6 @@ h2 {
 aside {
   display: none;
   font-family: 'Josefin Sans', sans-serif;
-  border: 2px solid whitesmoke;
   padding: 15px;
   margin-left: 5%;
   height: 650px;
@@ -79,12 +78,29 @@ button {
   padding-left: 70px;
   padding-right: 70px;
   width: 37%;
-  display: inline-block
+  display: inline-block;
+}
+
+#buttons {
+  display: inline;
+}
+
+#continue {
+  display: none;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 10%;
 }
 
 #newRound {
   display: none;
-  margin-top: 10%;
-  margin-left: 5%;
-  float: left;
+}
+
+td {
+border: 2px solid #200135;
+padding: 5px;
+}
+
+#place, #color {
+  visibility: hidden;
 }
