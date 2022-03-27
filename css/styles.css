@@ -42,6 +42,11 @@ h1 {
   text-shadow: 2px 2px black;
 }
 
+aside h1 {
+  text-shadow: 5px 5px black;
+  float: left;
+}
+
 h2 {
   font-size: 24px;
   text-indent: 40px;
@@ -55,12 +60,10 @@ h2 {
 aside {
   display: none;
   font-family: 'Josefin Sans', sans-serif;
-  padding: 15px;
-  margin-left: 5%;
-  height: 650px;
+  margin-left: 3%;
   width: 25%;
   float: left;
-  font-size: 15px;
+  font-size: 16px;
   /* background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6)); */
 }
 
@@ -87,13 +90,18 @@ button {
 
 #continue {
   display: none;
-  margin-top: 5%;
-  margin-left: 5%;
-  margin-bottom: 10%;
+  position: absolute;
+  top: 25%;
+  right: 6%;
 }
 
 #newRound {
   display: none;
+  position: absolute;
+  top: 55%;
+  right: 5%;
+  
+
 }
 
 td {
@@ -101,6 +109,12 @@ border: 2px solid #200135;
 padding: 5px;
 }
 
-#place, #color {
+#place {
   visibility: hidden;
+  font-size: 20px;
+}
+
+#color {
+  visibility: hidden;
+  width: 30px;
 }
