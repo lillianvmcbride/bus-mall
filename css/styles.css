@@ -91,14 +91,14 @@ button {
 #continue {
   display: none;
   position: absolute;
-  top: 20%;
-  right: 5%;
+  top: 25%;
+  right: 6%;
 }
 
 #newRound {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 5%;
   
 
