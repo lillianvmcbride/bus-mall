@@ -147,7 +147,64 @@ function displayResults() {
       }
   }
   let leaderBoard = sortedProducts.slice(0, 3);
-  console.log(leaderBoard);
+
+  let firstPlace = document.createElement('tr');
+  let numberOne = document.createElement('td');
+  let oneColor = document.createElement('td');
+  let oneClicked = document.createElement('td');
+  oneClicked.textContent = leaderBoard[0].timesClicked;
+  let oneSeen = document.createElement('td');
+  oneSeen.textContent = leaderBoard[0].timesSeen;
+  oneColor.style.backgroundColor = leaderBoard[0].color;
+  let oneProduct = document.createElement('td');
+  oneProduct.textContent = leaderBoard[0].name;
+  numberOne.id = 'one';
+  numberOne.textContent = '#1';
+  firstPlace.appendChild(numberOne);
+  firstPlace.appendChild(oneColor);
+  firstPlace.appendChild(oneProduct);
+  firstPlace.appendChild(oneSeen);
+  firstPlace.appendChild(oneClicked);
+  table.appendChild(firstPlace);
+
+  let secondPlace = document.createElement('tr');
+  let numberTwo = document.createElement('td');
+  let twoColor = document.createElement('td');
+  let twoClicked = document.createElement('td');
+  twoClicked.textContent = leaderBoard[1].timesClicked;
+  let twoSeen = document.createElement('td');
+  twoSeen.textContent = leaderBoard[1].timesSeen;
+  twoColor.style.backgroundColor = leaderBoard[1].color;
+  let twoProduct = document.createElement('td');
+  twoProduct.textContent = leaderBoard[1].name;
+  numberTwo.id = 'two';
+  numberTwo.textContent = '#2';
+  secondPlace.appendChild(numberTwo);
+  secondPlace.appendChild(twoColor);
+  secondPlace.appendChild(twoProduct);
+  secondPlace.appendChild(twoSeen);
+  secondPlace.appendChild(twoClicked);
+  table.appendChild(secondPlace);
+
+  let thirdPlace = document.createElement('tr');
+  let numberThree = document.createElement('td');
+  let threeColor = document.createElement('td');
+  let threeClicked = document.createElement('td');
+  threeClicked.textContent = leaderBoard[2].timesClicked;
+  let threeSeen = document.createElement('td');
+  threeSeen.textContent = leaderBoard[2].timesSeen;
+  threeColor.style.backgroundColor = leaderBoard[2].color;
+  let threeProduct = document.createElement('td');
+  threeProduct.textContent = leaderBoard[2].name;
+  numberThree.id = 'three';
+  numberThree.textContent = '#3';
+  thirdPlace.appendChild(numberThree);
+  thirdPlace.appendChild(threeColor);
+  thirdPlace.appendChild(threeProduct);
+  thirdPlace.appendChild(threeSeen);
+  thirdPlace.appendChild(threeClicked);
+  table.appendChild(thirdPlace);
+
   runChart();
 }
 
