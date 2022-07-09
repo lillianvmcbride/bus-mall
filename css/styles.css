@@ -8,8 +8,11 @@
 }
 
 body{
+  height: 100vh;
   width: 100%;
-  background-image: linear-gradient(to right, whitesmoke, rgba(14.5, 6.7, 46.3, .6));
+  justify-content: center;
+  background-image: url('../assets/istockphoto-94294277-612x612.jpg');
+  background-size: cover;
 }
 
 #one, #two, #three, #four{
@@ -216,7 +219,7 @@ img {
 
 .title {
   color: #350037;
-  font-size: 64px;
+  font-size: 84px;
   font-family: 'neonregular';
   text-shadow: 2px 2px white;
   font-weight: bolder;
@@ -259,7 +262,7 @@ aside {
 button {
   font-family: 'Josefin Sans', sans-serif;
   border-radius: 20%;
-  padding: 30px;
+  padding: 20px;
   font-size: 24px;
   font-weight: bold;
   background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6));
