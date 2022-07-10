@@ -178,15 +178,11 @@ body{
   #continue {
     display: none;
     position: absolute;
-    top: 30%;
-    right: 6%;
   }
   
   #newRound {
     display: none;
     position: absolute;
-    top: 55%;
-    right: 5%;
   }
   
   td {
@@ -194,6 +190,8 @@ body{
   padding: 5px;
   font-size: 14px;
   text-align: center;
+  color: #BD2019;
+  background-color: #D9A86E;
   }
   
   #place {
@@ -236,6 +234,7 @@ h1 {
 aside h1 {
   text-shadow: 5px 5px black;
   float: left;
+  color: #D9A86E;
 }
 
 h2 {
@@ -255,7 +254,7 @@ aside {
   width: 25%;
   float: left;
   font-size: 16px;
-  padding-top: 100px;
+  padding-top: 200px;
   /* background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6)); */
 }
 
@@ -269,7 +268,7 @@ button {
 
 #canvas {
   text-align: center;
-  padding-top: 80px;
+  padding-top: 30px;
   padding-left: 70px;
   padding-right: 70px;
   width: 55%;
@@ -283,13 +282,18 @@ button {
 #continue {
   display: none;
   position: absolute;
+  top: 10%;
+  left: 5%;
+  background-color: white;;
+
 }
 
 #newRound {
   display: none;
   position: absolute;
-  
-
+  top: 10%;
+  left: 20%;
+  background-color: white;
 }
 
 td {
