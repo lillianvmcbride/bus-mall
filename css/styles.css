@@ -217,7 +217,7 @@ img {
   margin-left: 10px;
 }
 
-.title {
+#title {
   color: #350037;
   font-size: 84px;
   font-family: 'neonregular';
@@ -255,6 +255,7 @@ aside {
   width: 25%;
   float: left;
   font-size: 16px;
+  padding-top: 100px;
   /* background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6)); */
 }
 
@@ -268,9 +269,10 @@ button {
 
 #canvas {
   text-align: center;
+  padding-top: 80px;
   padding-left: 70px;
   padding-right: 70px;
-  width: 37%;
+  width: 55%;
   display: inline-block;
 }
 
@@ -281,15 +283,11 @@ button {
 #continue {
   display: none;
   position: absolute;
-  top: 25%;
-  right: 6%;
 }
 
 #newRound {
   display: none;
   position: absolute;
-  top: 55%;
-  right: 5%;
   
 
 }

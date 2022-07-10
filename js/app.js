@@ -235,7 +235,9 @@ function imageWasClicked(event) {
     for (let j = 0; j < imageElements.length; j++) {
       imageElements[j].removeEventListener('click', imageWasClicked, false);
     }
+    let title = document.getElementById('title');
     let goAway = document.getElementById('imageContainer');
+    title.remove();
     goAway.remove();
     let canvasDiv = document.getElementById('canvas');
     let canvas = document.createElement('canvas');
