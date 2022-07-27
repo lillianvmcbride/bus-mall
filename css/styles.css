@@ -26,7 +26,7 @@ body{
   width: 100%;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 480px) {
   img {
     border: 2px solid #200135;
     height: 125px;
@@ -50,7 +50,7 @@ body{
     font-size: 16px;
     width: 100%;
     position: absolute;
-    top: 87%;
+    top: 40%;
   }
   
   button {
@@ -69,14 +69,15 @@ body{
   #continue {
     display: none;
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 80%;
   }
   
   #newRound {
     display: none;
     position: absolute;
-    top: 40%;
+    top: 35%;
+
     left: 10%;
   }
 
@@ -122,18 +123,118 @@ body{
     }
 }
 
-@media (min-width: 681px) {
+
+@media (min-width: 481px) {
   img {
     border: 2px solid #200135;
-    height: 250px;
-    width: 250px;
+    height: 125px;
+    width: 125px;
     margin-left: 10px;
     border-radius: 10%;
   }
 
   #title {
     color: #350037;
-    font-size: 64px;
+    font-size: 50px;
+    font-family: 'neonregular';
+    text-shadow: 2px 2px white;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  aside {
+    display: none;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    position: absolute;
+    top: 60%;
+  }
+  
+  button {
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 20%;
+    padding: 15px;
+    font-size: 14px;
+    font-weight: bold;
+
+  }
+
+  #buttons {
+    display: inline;
+  }
+  
+  #continue {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 80%;
+  }
+  
+  #newRound {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+  }
+
+  h1 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 26px;
+    padding-top: 10px;
+    color: white;
+    text-shadow: 2px 2px black;
+  }
+
+  aside h1 {
+    margin-top: 90px;
+    color: #D9A86E;
+  }
+
+  #place {
+    visibility: hidden;
+    font-size: 20px;
+  }
+  
+  #color {
+    visibility: hidden;
+    width: 30px;
+  }
+
+  td {
+    border: 2px solid #200135;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+    color: #BD2019;
+    background-color: #D9A86E;
+    }
+
+    #canvas {
+      position: absolute;
+      top: 0%;
+      margin-top: 30px;
+      text-align: center;
+      width: 100%;
+
+    }
+}
+
+
+
+
+@media (min-width: 681px) {
+  img {
+    border: 2px solid #200135;
+    height: 200px;
+    width: 200px;
+    margin-left: 10px;
+    border-radius: 10%;
+  }
+
+  #title {
+    color: #350037;
+    font-size: 54px;
     text-align: center;
     font-family: 'neonregular';
     text-shadow: 2px 2px white;
@@ -151,7 +252,6 @@ body{
   
   aside h1 {
     text-shadow: 5px 5px black;
-    float: left;
     color: #D9A86E;
   }
 
@@ -164,7 +264,7 @@ body{
     font-size: 12px;
     margin-bottom: 20px;
     position: absolute;
-    top: 125%;
+    top: 80%;
   }
 
   button {
@@ -190,14 +290,12 @@ body{
     display: none;
     position: absolute;
     top: 25%;
-    left: 5%;
   }
   
   #newRound {
     display: none;
     position: absolute;
     top: 25%;
-    right: 5%;
   }
   
   td {
@@ -220,7 +318,7 @@ body{
   }
 }
 
-/* @media (min-width: 850px) {
+@media (min-width: 800px) {
   img {
     border: 2px solid #200135;
     height: 200px;
@@ -231,7 +329,7 @@ body{
 
   #title {
     color: #350037;
-    font-size: 60px;
+    font-size: 64px;
     font-family: 'neonregular';
     text-shadow: 2px 2px white;
     font-weight: bolder;
@@ -240,8 +338,8 @@ body{
 
   aside h1 {
     text-shadow: 5px 5px black;
-    float: left;
     color: #D9A86E;
+    font-size: 36px;
   }
 
   aside {
@@ -253,14 +351,14 @@ body{
     font-size: 12px;
     margin-bottom: 20px;
     position: absolute;
-    top: 20%;
+    top: 90%;
   }
   
   button {
     font-family: 'Josefin Sans', sans-serif;
     border-radius: 20%;
-    padding: 15px;
-    font-size: 14px;
+    padding: 20px;
+    font-size: 24px;
     font-weight: bold;
 
   }
@@ -272,17 +370,15 @@ body{
   #continue {
     display: none;
     width: 150px;
-    /* top: 20%;
-    left: 80%; */
-    clear: both;
-    float: right;
+    top: 15%;
+    left: 80%;
   }
   
   #newRound {
     display: none;
     position: absolute;
-    top: 35%;
-    left: 80%;
+    top: 15%;
+    left: 10%;
   }
 
   h1 {
@@ -318,7 +414,19 @@ body{
       width: 100%;
 
     }
-} */
+}
+
+@media (min-width: 900px)  {
+  aside {
+    position: absolute;
+    top: 100%;
+
+  }
+  td {
+    font-size: 18px;
+  }
+
+}
 
 @media (min-width: 1000px) {
   img {
@@ -331,7 +439,7 @@ body{
 
   #title {
     color: #350037;
-    font-size: 64px;
+    font-size: 84px;
     text-align: center;
     font-family: 'neonregular';
     text-shadow: 2px 2px white;
@@ -351,6 +459,7 @@ body{
     text-shadow: 5px 5px black;
     float: left;
     color: #D9A86E;
+    display: block;
   }
 
   aside {
@@ -358,11 +467,15 @@ body{
     font-family: 'Josefin Sans', sans-serif;
     margin-left: 3%;
     width: 50%;
-    float: left;
-    font-size: 12px;
+    font-size: 16px;
     margin-bottom: 20px;
     position: absolute;
-    top: 20%;
+    top: 80%;
+  }
+
+  table {
+    display: block;
+    float: left;
   }
 
   button {
@@ -375,8 +488,10 @@ body{
   
   #canvas {
     text-align: center;
-
-    width: 100%;
+    padding-top: 30px;
+    padding-left: 70px;
+    padding-right: 70px;
+    width: 65%;
     display: inline-block;
   }
   
@@ -393,13 +508,14 @@ body{
   #newRound {
     display: none;
     position: absolute;
-    right: 5%;
+    left: 80%;
+    top: 35%;
   }
   
   td {
   border: 2px solid #200135;
   padding: 5px;
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
   color: #BD2019;
   background-color: #D9A86E;
@@ -416,102 +532,6 @@ body{
   }
 }
 
-@media (min-width: 1000px) {
-  img {
-    border: 2px solid #200135;
-    height: 250px;
-    width: 250px;
-    margin-left: 10px;
-    border-radius: 10%;
-  }
-
-  #title {
-    color: #350037;
-    font-size: 64px;
-    text-align: center;
-    font-family: 'neonregular';
-    text-shadow: 2px 2px white;
-    font-weight: bolder;
-  }
-
-  h1 {
-    font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
-    font-size: 36px;
-    padding-top: 10px;
-    color: white;
-    text-shadow: 2px 2px black;
-  }
-  
-  aside h1 {
-    text-shadow: 5px 5px black;
-    float: left;
-  }
-
-  aside {
-    display: none;
-    position: absolute;
-    top: 20%;
-    font-family: 'Josefin Sans', sans-serif;
-    margin-left: 3%;
-    width: 50%;
-    float: left;
-    font-size: 12px;
-    margin-bottom: 20px;
-    /* background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6)); */
-  }
-
-  button {
-    font-family: 'Josefin Sans', sans-serif;
-    border-radius: 20%;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  #canvas {
-    text-align: center;
-
-    width: 100%;
-    display: inline-block;
-  }
-  
-  #buttons {
-    display: inline;
-  }
-  
-  #continue {
-    display: none;
-    position: absolute;
-    left:  85%;
-  }
-  
-  #newRound {
-    display: none;
-    position: absolute;
-    left: 85%;
-    top: 50%;
-  }
-  
-  td {
-  border: 2px solid #200135;
-  padding: 5px;
-  font-size: 14px;
-  text-align: center;
-  color: #BD2019;
-  background-color: #D9A86E;
-  }
-  
-  #place {
-    visibility: hidden;
-    font-size: 20px;
-  }
-  
-  #color {
-    visibility: hidden;
-    width: 30px;
-  }
-}
 
 
 @media (min-width: 1200px) {
@@ -565,7 +585,7 @@ aside {
   padding-top: 200px;
   position: absolute;
   left: 60%;
-  /* background-image: linear-gradient(to left, rgba(52.5, 1.2, 33.3, .1), rgba(56.9, 33.7, 72.5, .6)); */
+  top: 15%;
 }
 
 button {
@@ -593,7 +613,8 @@ button {
   display: none;
   position: absolute;
   top: 20%;
-  left: 65%;
+  left: 85%;
+  width: 150px;
   background-color: white;;
 
 }
@@ -602,7 +623,7 @@ button {
   display: none;
   position: absolute;
   top: 20%;
-  left: 85%;
+  left: 65%;
   width: 150px;
   background-color: white;
 }
