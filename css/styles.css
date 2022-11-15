@@ -27,6 +27,7 @@ body{
 }
 
 @media (max-width: 480px) {
+
   img {
     border: 2px solid #200135;
     height: 125px;
@@ -37,11 +38,12 @@ body{
 
   #title {
     color: #350037;
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'neonregular';
     text-shadow: 2px 2px white;
     font-weight: bolder;
     text-align: center;
+    margin-top: 80px;
   }
 
   aside {
@@ -121,6 +123,10 @@ body{
       width: 100%;
 
     }
+    .p-menu1 {
+      right: 0;
+      }
+
 }
 
 
@@ -135,7 +141,7 @@ body{
 
   #title {
     color: #350037;
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'neonregular';
     text-shadow: 2px 2px white;
     font-weight: bolder;
@@ -218,10 +224,12 @@ body{
       width: 100%;
 
     }
+
+    .p-menu1 {
+      right: 0px;
+      width: 20px;
+      }
 }
-
-
-
 
 @media (min-width: 681px) {
   img {
@@ -316,6 +324,10 @@ body{
     visibility: hidden;
     width: 30px;
   }
+  .p-menu1 {
+    right: 0px;
+    }
+
 }
 
 @media (min-width: 800px) {
@@ -351,7 +363,7 @@ body{
     font-size: 12px;
     margin-bottom: 20px;
     position: absolute;
-    top: 90%;
+    top: 113%;
   }
   
   button {
@@ -370,15 +382,17 @@ body{
   #continue {
     display: none;
     width: 150px;
-    top: 15%;
+    top: 125%;
     left: 80%;
+    margin-right: 20px;
   }
   
   #newRound {
     display: none;
     position: absolute;
-    top: 15%;
-    left: 10%;
+    top: 145%;
+    left: 80%;
+    margin-right: 20px;
   }
 
   h1 {
@@ -402,7 +416,7 @@ body{
   td {
     border: 2px solid #200135;
     padding: 5px;
-    font-size: 12px;
+    font-size: 18px;
     text-align: center;
     color: #BD2019;
     background-color: #D9A86E;
@@ -419,13 +433,17 @@ body{
 @media (min-width: 900px)  {
   aside {
     position: absolute;
-    top: 100%;
+    top: 135%;
 
   }
   td {
     font-size: 18px;
   }
 
+
+  .p-menu1 {
+    right: 100px;
+    }
 }
 
 @media (min-width: 1000px) {
@@ -503,13 +521,14 @@ body{
     display: none;
     position: absolute;
     right: 5%;
+    top: 30%;
   }
   
   #newRound {
     display: none;
     position: absolute;
     left: 80%;
-    top: 35%;
+    top: 55%;
   }
   
   td {
@@ -530,6 +549,10 @@ body{
     visibility: hidden;
     width: 30px;
   }
+
+  .p-menu1 {
+    right: 115px;
+    }
 }
 
 
@@ -644,56 +667,5 @@ text-align: center;
   visibility: hidden;
   width: 30px;
 }
-}
 
-
-
-/* Hamburger menu */
-
-.p-menu1{
-  height: 100%;
-}
-
-.hamburger1 {
- height: 45px;
- margin: 30px;
- display: grid;
- grid-template-rows: repeat(3, 1fr);
- justify-items: right;
- z-index: 120;
-}
-
-.hamburger1 div {
- background-color: black;
- position: relative;
- width: 40px;
- height: 5px;
- margin-top: 7px;
- -webkit-transition: all 0.2s ease-in-out;
- transition: all 0.2s ease-in-out;
-}
-
-#toggle1 {
- display: none;
-}
-
-#toggle1:checked + .hamburger1 .top {
- -webkit-transform: rotate(-45deg);
-         transform: rotate(-45deg);
- margin-top: 22.5px;
-}
-
-#toggle1:checked + .hamburger1 .meat {
- -webkit-transform: rotate(45deg);
-         transform: rotate(45deg);
- margin-top: -5px;
-}
-
-#toggle1:checked + .hamburger1 .bottom {
- -webkit-transform: scale(0);
-         transform: scale(0);
-}
-
-#toggle1:checked ~ .menu1 {
- height: 630px;
 }
